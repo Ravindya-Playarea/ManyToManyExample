@@ -13,8 +13,8 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class StudentCoursePK implements Serializable {
-    @Column(name = "student_id")
-    private String orderId;
-    @Column(name = "course_code")
-    private String itemCode;
+//    @Column(name = "student_id")
+    private Student student;
+//    @Column(name = "course_code")
+    private Course course;
 }

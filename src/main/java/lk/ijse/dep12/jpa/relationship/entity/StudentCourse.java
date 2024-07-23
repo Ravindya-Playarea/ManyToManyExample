@@ -14,30 +14,44 @@ import java.sql.Date;
 @AllArgsConstructor
 @Entity
 @Table(name = "student_course")
+@IdClass(StudentCoursePK.class)
 public class StudentCourse implements Serializable {
-    @EmbeddedId
-    private StudentCoursePK studentCoursePK;
+//    @EmbeddedId
+//    private StudentCoursePK studentCoursePK;
 
+    @Id
     @ManyToOne
-    @JoinColumn(name = "student_id",referencedColumnName = "id", insertable = false, updatable = false)
+//    @MapsId("studentId")
+    @JoinColumn(name = "student_id",referencedColumnName = "id")
     private Student student;
 
+    @Id
     @ManyToOne
-    @JoinColumn(name = "course_code",referencedColumnName = "code", insertable = false, updatable = false)
+//    @MapsId("courseCode")
+    @JoinColumn(name = "course_code",referencedColumnName = "code")
     private Course course;
 
     @Column(name = "registered_by")
     private String registeredBy;
     private Date date;
 
-    public StudentCourse(StudentCoursePK studentCoursePK, String registeredBy, Date date) {
-        this.studentCoursePK = studentCoursePK;
-        this.registeredBy = registeredBy;
-        this.date = date;
-    }
-    public StudentCourse(Student student, Course course, String registeredBy, Date date) {
-        this.studentCoursePK = new StudentCoursePK(student.getId(), course.getCode());
-        this.registeredBy = registeredBy;
-        this.date = date;
-    }
+//    public StudentCourse(StudentCoursePK studentCoursePK, String registeredBy, Date date) {
+//        this.studentCoursePK = studentCoursePK;
+//        this.registeredBy = registeredBy;
+//        this.date = date;
+//    }
+//    public StudentCourse(Student student, Course course, String registeredBy, Date date) {
+//        this.studentCoursePK = new StudentCoursePK(student.getId(), course.getCode());
+//        this.registeredBy = registeredBy;
+//        this.date = date;
+//    }
+
+
+//    public StudentCourse(Student student, Course course, String registeredBy, Date date) {
+//        this.studentCoursePK = new StudentCoursePK(student.getId(), course.getCode());
+//        this.student = student;
+//        this.course = course;
+//        this.registeredBy = registeredBy;
+//        this.date = date;
+//    }
 }
